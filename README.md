@@ -1,4 +1,4 @@
-<img src="https://github.com/subhajeet2107/shurly/blob/master/frontend/public/img/icons/shurly_main.png" />
+<p align="center"><img src="https://github.com/subhajeet2107/shurly/blob/master/frontend/public/img/icons/shurly_main.png" /></p>
 
 Shurly
 ======
