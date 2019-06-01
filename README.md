@@ -4,6 +4,7 @@ Shurly
 ======
 
 Feature Rich URL Shortener with built in analytics
+
 [![Build Status](https://travis-ci.com/subhajeet2107/shurly.svg?branch=master)](https://travis-ci.org/subhajeet2107/shurly)
 [![Coverage Status](https://coveralls.io/repos/github/subhajeet2107/shurly/badge.svg?branch=master)](https://coveralls.io/github/subhajeet2107/shurly?branch=master)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
