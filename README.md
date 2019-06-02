@@ -3,7 +3,7 @@
 Shurly
 ======
 
-Feature Rich URL Shortener with built in analytics
+Fastest 🚀 Feature Rich URL Shortener with built in Analytics 🐢
 
 [![Build Status](https://travis-ci.com/subhajeet2107/shurly.svg?branch=master)](https://travis-ci.org/subhajeet2107/shurly)
 [![Coverage Status](https://coveralls.io/repos/github/subhajeet2107/shurly/badge.svg?branch=master)](https://coveralls.io/github/subhajeet2107/shurly?branch=master)
