@@ -69,6 +69,7 @@ media/
 *.njsproj
 *.sln
 *.sw*
+*package-lock.json
 
 # VS code
 .vscode
