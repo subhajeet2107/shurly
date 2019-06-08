@@ -17,10 +17,8 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 import App from '@/App.vue'
 import './registerServiceWorker'
 
-import Header from '@/components/comps/Header.vue'
-
 Vue.config.productionTip = false
-Vue.use(Buefy)
+Vue.use(Buefy, {defaultIconPack: 'fas'})
 
 
 
