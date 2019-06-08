@@ -18,7 +18,7 @@ before_script:
     - docker-compose up --build -d
 
 script:
-    - coverage run --omit="*/templates*,*/venv*,*/tests*,*/python*" manage.py test
+    - coverage run --omit="*/templates*,*/venv*,*/tests*,*/python*" backend/manage.py test
 
 after_script:
     - docker-compose down
