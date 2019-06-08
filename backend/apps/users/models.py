@@ -15,7 +15,6 @@ class UserManager(BaseUserManager):
                           is_staff=is_staff,
                           is_superuser=is_superuser,
                           last_login=timezone.now(),
-                          registered_at=timezone.now(),
                           **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -32,15 +31,15 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='Email', unique=True, max_length=255)
-    first_name = models.CharField(verbose_name='First name', max_length=30, default='first')
-    last_name = models.CharField(verbose_name='Last name', max_length=30, default='last')
+    name = models.CharField(verbose_name='Name', max_length=30, default='first')
     avatar = models.ImageField(verbose_name='Avatar', blank=True)
     token = models.UUIDField(verbose_name='Token', default=uuid4, editable=False)
 
     is_admin = models.BooleanField(verbose_name='Admin', default=False)
     is_active = models.BooleanField(verbose_name='Active', default=True)
     is_staff = models.BooleanField(verbose_name='Staff', default=False)
-    registered_at = models.DateTimeField(verbose_name='Registered at', auto_now_add=timezone.now)
+    added_on = models.DateTimeField(verbose_name='Registered at', auto_now_add=True)
+    updated_on = models.DateTimeField(verbose_name='Updated at', auto_now=True)
 
     # Fields settings
     EMAIL_FIELD = 'email'
@@ -52,21 +51,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
-    @property
-    def full_name(self):
-        return f'{self.first_name} {self.last_name}'
-    full_name.fget.short_description = 'Full name'
-
-    @property
-    def short_name(self):
-        return f'{self.last_name} {self.first_name[0]}.'
-    short_name.fget.short_description = 'Short name'
-
-    def get_full_name(self):
-        return self.full_name
-
-    def get_short_name(self):
-        return self.short_name
-
     def __str__(self):
-        return self.full_name
+        return self.name

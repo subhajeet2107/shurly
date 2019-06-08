@@ -59,8 +59,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @list_route(methods=['POST'])
     def register(self, request):
-        last_name = request.data.get('last_name', None)
-        first_name = request.data.get('first_name', None)
+        name = request.data.get('name', None)
         email = request.data.get('email', None)
         password = request.data.get('password', None)
 
@@ -71,8 +70,7 @@ class UserViewSet(viewsets.ModelViewSet):
         user = User.objects.create(
             email=email,
             password=password,
-            last_name=last_name,
-            first_name=first_name,
+            name=name,
             is_admin=False,
         )
         return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
