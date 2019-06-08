@@ -1,27 +1,21 @@
 sudo: false
 dist: xenial
 services:
-  - docker
+  - postgresql
 
 language: python
 
 python: 3.6
 
-before_install:
-  - docker-compose -v
-  - docker -v
-
 install:
+    - pip install -r backend/requirements.txt
     - pip install coveralls
 
 before_script:
-    - docker-compose up --build -d
+    - psql -c 'create database shurly;' -U postgres
 
 script:
     - coverage run --omit="*/templates*,*/venv*,*/tests*,*/python*" backend/manage.py test
-
-after_script:
-    - docker-compose down
 
 after_success:
     - coveralls
