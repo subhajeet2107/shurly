@@ -13,12 +13,11 @@ before_install:
 
 install:
     - pip install -r backend/requirements.txt
-    - pip install pytest
     - pip install coveralls
     - pip install tox
 
 script:
-    - coverage run --omit="*/templates*,*/venv*,*/tests*,*/python*" -m py.test
+    - coverage run --omit="*/templates*,*/venv*,*/tests*,*/python*" manage.py test
 
 after_success:
     - coveralls
