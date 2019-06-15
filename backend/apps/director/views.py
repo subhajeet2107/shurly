@@ -16,3 +16,6 @@ class DirectorViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         director = serializer.save()
+
+    def perform_destroy(self, instance):
+        instance.delete()

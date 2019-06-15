@@ -225,6 +225,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
+BASE_URL = '/'
 
 

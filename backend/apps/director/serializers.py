@@ -8,8 +8,8 @@ from apps.users.serializers import UserSerializer
 
 class DirectorSerializer(serializers.ModelSerializer):
     updated_on = serializers.DateTimeField(format='%H:%M %d.%m.%Y', read_only=True)
-    users = UserSerializer(many=True)
+    added_by = UserSerializer()
 
     class Meta:
         model = Director
-        fields = ['original_url', 'short_url', 'updated_on','users']
+        fields = ['original_url', 'short_url', 'short_url_hash', 'updated_on','added_by']
