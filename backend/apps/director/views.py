@@ -1,5 +1,7 @@
 from django.conf import settings
-from django.template.loader import render_to_string
+from django.http import HttpResponsePermanentRedirect
+from django.shortcuts import get_object_or_404, redirect
+from django.db.models import F
 
 from rest_framework import viewsets, status
 from rest_framework.decorators import list_route
@@ -15,7 +17,17 @@ class DirectorViewSet(viewsets.ModelViewSet):
     permission_classes = []
 
     def perform_create(self, serializer):
-        director = serializer.save()
+        if self.request.user and self.request.is_authenticated:
+            director = serializer.save(added_by=self.request.user)
+        serializer.save()
 
     def perform_destroy(self, instance):
         instance.delete()
+
+
+def redirector(request, short_url_hash):
+    director = get_object_or_404(Director, short_url_hash=short_url_hash)
+    director.hits = director.hits + 1
+    director.save()
+    return HttpResponsePermanentRedirect(director.original_url)
+
