@@ -7,7 +7,12 @@
     </div>
 
     <div class="navbar-menu">
-        <div class="navbar-end">
+        <div class="navbar-end" v-if="loggedIn">
+            <a class="navbar-item">
+            {{ profile.name }}
+            </a>
+        </div>
+        <div class="navbar-end" v-else>
             <b-dropdown position="is-bottom-left" aria-role="menu">
                 <a
                     class="navbar-item"
@@ -38,10 +43,15 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import LoginForm from '@/components/forms/LoginForm.vue'
   import RegisterForm from '@/components/forms/RegisterForm.vue'
   export default {
     name: 'BaseHeader',
     components: {LoginForm, RegisterForm},
+    computed: mapState({
+        loggedIn: state => state.auth.loggedIn,
+        profile: state => state.auth.profile
+    })
   }
 </script>

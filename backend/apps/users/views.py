@@ -54,7 +54,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
         if user:
             login(request, user)
-            return Response(status=status.HTTP_200_OK)
+            serializer = self.serializer_class(request.user)
+            return Response(status=status.HTTP_200_OK, data=serializer.data)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     @list_route(methods=['POST'])

@@ -7,7 +7,8 @@ const state = {
   authError: false
 }
 
-const getters = {}
+const getters = {
+}
 
 const mutations = {
   login (state) {
@@ -30,7 +31,10 @@ const mutations = {
 const actions = {
   postLogin (context, payload) {
     return axios.post('/api/users/login/', payload)
-      .then(response => {})
+      .then(response => {
+        context.commit('login')
+        context.commit('setProfile', response.data)
+      })
       .catch(e => {
         context.commit('setAuthError', true)
         console.log(e)

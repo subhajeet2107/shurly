@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import store from '@/store'
+import store from '@/store/index'
 import router from '@/router'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
