@@ -58,8 +58,8 @@ POSTGRES_USER=postgresuser
 
 ## Using Shurly API
 
-User Registration:
-------------------
+### User Registration:
+
 
 `
 curl -XPOST http://127.0.0.1:8000/api/user/ -H 'Content-Type: application/json' -d '{
@@ -69,15 +69,14 @@ curl -XPOST http://127.0.0.1:8000/api/user/ -H 'Content-Type: application/json' 
 }'
 `
 
-List all URLs:
-------------------
+### List all URLs:
+
 
 `
 curl -XGET http://127.0.0.1:8000/api/director/
 `
 
-Shorten a URL:
-------------------
+### Shorten a URL:
 
 `
 curl -XPOST http://127.0.0.1:8000/api/director/ -H 'Content-Type: application/json' -d '{
@@ -86,8 +85,8 @@ curl -XPOST http://127.0.0.1:8000/api/director/ -H 'Content-Type: application/js
 `
 This will return a JSON response with short_url which you can use, this will be relative to the website where Shurly is hosted
 
-Get a short URL by id:
-------------------
+### Get a short URL by id:
+
 
 `
 curl -XGET http://127.0.0.1:8000/api/director/2/
@@ -96,7 +95,7 @@ curl -XGET http://127.0.0.1:8000/api/director/2/
 
 ## Contributions
 
-Contributions are welcomed, just open a pull request to add a new feature, make sure coverage report is over 80% and travis is happy
+Contributions are welcome, just open a pull request to add a new feature, make sure to generate coverage report and travis is happy
 
 
 ## License
