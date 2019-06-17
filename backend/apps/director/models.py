@@ -27,8 +27,7 @@ class Director(models.Model):
 
 @receiver(post_save, sender=Director)
 def generate_shortened_url(sender, instance=None, created=False, **kwargs):
-
-    if created:
+    if not instance.short_url_hash:
         custom_hasher = CustomHasher(instance.id)
         short_url_hash = custom_hasher.encode()
         short_url = settings.BASE_URL + short_url_hash

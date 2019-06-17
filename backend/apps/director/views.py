@@ -16,10 +16,26 @@ class DirectorViewSet(viewsets.ModelViewSet):
     serializer_class = DirectorSerializer
     permission_classes = []
 
+    def create(self, request, *args, **kwargs):
+        original_url = request.data.get('original_url')
+
+        if Director.objects.filter(original_url=original_url).exists():
+            director = Director.objects.get(original_url=original_url)
+        else:
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            director = self.perform_create(serializer)
+
+        director.refresh_from_db()
+        serializer = DirectorSerializer(instance=director)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     def perform_create(self, serializer):
-        if self.request.user and self.request.is_authenticated:
+        if self.request.user and self.request.user.is_authenticated:
             director = serializer.save(added_by=self.request.user)
-        serializer.save()
+        else:
+            director = serializer.save()
+        return director
 
     def perform_destroy(self, instance):
         instance.delete()
