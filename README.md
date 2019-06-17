@@ -16,3 +16,9 @@ Fastest 🚀 Feature Rich URL Shortener with built in Analytics 🐢
 
 ## Development
 + run `docker-compose up --build`
+
+## Usage
+
+Creating short urls in Shurly is very easy, just paste the long url in homepage
+
+![How to use](https://github.com/subhajeet2107/shurly/blob/master/frontend/public/img/shurly_usage.gif)

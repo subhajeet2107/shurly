@@ -5,7 +5,7 @@
                 <b-input placeholder="Paste URL" type="url" size="is-large" icon="link" v-model="original_url"></b-input>
             </b-field>
 
-            <b-message title="Success with icon" type="is-success" has-icon aria-close-label="Close message" v-if="shortend_url_response">
+            <b-message title="Your short url" type="is-success" has-icon aria-close-label="Close message" v-if="shortend_url_response">
                 {{base_url}}r{{ shortend_url_response.short_url }}
             </b-message>
 
