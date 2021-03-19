@@ -43,7 +43,7 @@ wcwidth==0.1.7
 Werkzeug==0.15.3
 
 
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 
 
 
